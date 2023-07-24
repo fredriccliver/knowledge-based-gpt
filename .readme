@@ -1,35 +1,33 @@
-# Project: knowledge based GPT
+# Project: Knowledge-Based GPT
+Utilizes a vector database and OpenAI API.
 
-Use vector database, openai api. 
+# How to Use:
 
+## Preparation
+Install necessary packages with `pip install -r requirements.txt`.
+Create a `/.env` file and set your OpenAI key as follows: `OPENAI_API_KEY = [OPENAI KEY]`
 
+## Knowledge Preparation
+Add the information you want to use into `information.txt`. For instance, you can scrape an entire Wikipedia page and add it.
 
+## One-Time Chat
+Run `python embedding_test.py "Your question"` For example: `python embedding_test.py "Explain about Russia's invasion in Ukraine"`
+The required embedding model will automatically be downloaded to `/nltk_data`. There is no need for you to manually manage this.
 
-# How to use.
+## Continuous Chat
+Run `python embedding_conversation.py "Your question"` For example: `python embedding_conversation.py "Let's talk about Russia's invasion in Ukraine"`
 
-## 1. Preparation
-1. pip install -r requirement.txt 로 package 설치.
-2. /.env 파일 만들고, key 세팅 OPENAI_API_KEY = [OPENAI KEY] 
-
-## 2. Knowledge preparation
-1. information.txt 에 사용하고자 하는 정보를 넣는다.
-e.g. 특정 wikipedia 페이지를 모두 긁어서 넣는다.
-
-## 3. one-time Chat
-1. python embedding_test.py "묻고자 하는 내용" 
-e.g. python embedding_conversation.py "Explain about Russia invasion in Ukraine"
-
-자동으로 /nltk_data 에 필요한 embedding model이 다운로드되며, 신경쓸 필요가 없습니다.
-
-## 4. continuous Chat
-1. python embedding_conversation.py "묻고자 하는 내용"
-e.g. python embedding_conversation.py "Let's talk about Russia invasion in Ukraine"
-
-### 5. Caution
-1) 자동으로 /conversation 아래에 faiss.index 가 생성됩니다. information.txt 내용을 수정하는 경우에는 미리 /conversation/faiss.index 를 삭제해주세요.
-2) 대화의 dialogue는 /conversation/messages.pkl에 저장됩니다. 대화기록을 초기화하고 싶은 경우, 삭제해주세요.
+## Caution
+A `faiss.index` file will automatically be created in the `/conversation` directory. If you modify the contents of `information.txt`, make sure to delete the `/conversation/faiss.index` file beforehand.
+The dialogue of the conversation is stored in `/conversation/messages.pkl`. If you want to reset the conversation history, delete this file.
 
 
 
 
+# Comparison
 
+## Original ChatGPT
+![ChatGPT](./images/original%20chatgpt.png)
+
+## knowledge based ChatGPT
+![ChatGPT](./images/informed%20chatgpt.png)
