@@ -1,0 +1,35 @@
+# Project: knowledge based GPT
+
+Use vector database, openai api. 
+
+
+
+
+# How to use.
+
+## 1. Preparation
+1. pip install -r requirement.txt 로 package 설치.
+2. /.env 파일 만들고, key 세팅 OPENAI_API_KEY = [OPENAI KEY] 
+
+## 2. Knowledge preparation
+1. information.txt 에 사용하고자 하는 정보를 넣는다.
+e.g. 특정 wikipedia 페이지를 모두 긁어서 넣는다.
+
+## 3. one-time Chat
+1. python embedding_test.py "묻고자 하는 내용" 
+e.g. python embedding_conversation.py "Explain about Russia invasion in Ukraine"
+
+자동으로 /nltk_data 에 필요한 embedding model이 다운로드되며, 신경쓸 필요가 없습니다.
+
+## 4. continuous Chat
+1. python embedding_conversation.py "묻고자 하는 내용"
+e.g. python embedding_conversation.py "Let's talk about Russia invasion in Ukraine"
+
+### 5. Caution
+1) 자동으로 /conversation 아래에 faiss.index 가 생성됩니다. information.txt 내용을 수정하는 경우에는 미리 /conversation/faiss.index 를 삭제해주세요.
+2) 대화의 dialogue는 /conversation/messages.pkl에 저장됩니다. 대화기록을 초기화하고 싶은 경우, 삭제해주세요.
+
+
+
+
+

@@ -1,0 +1,4 @@
+/nltk_data/**
+/conversation/**
+.vscode
+.env
